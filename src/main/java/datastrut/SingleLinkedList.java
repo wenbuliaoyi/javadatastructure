@@ -89,17 +89,58 @@ public class SingleLinkedList<E> {
 		return null;
 	}
 	
-//	private E unlink (Node<E> node) {
-//		final E element = node.item;
-//		final Node<E> next = node.next;
-//		if (node != null && node == head) {
-//			this.head = node.next;
-//		} else if (next == null) {
-//			node = null;
-//		} else {
-//			
-//		}
-//		return element;
-//	}
+	public void reverse(){
+		
+		this.head = reverse(this.head);
+		
+	}
+	
+public void reverseByLoop(){
+		
+		this.head = reverseByLoop(this.head);
+		
+	}
+	
+	/**
+	 * 反转--通过递归
+	 * @param head
+	 * @return
+	 */
+	private Node<E> reverse(Node<E> head){
+		if (head==null) {
+			return head;
+		}
+		if (head.next == null) {
+			return head;
+		}
+		
+		Node<E> reHead = reverse(head.next);
+		head.next.next=head;
+		head.next = null;
+		return reHead;
+	}
+	
+	/**
+	 * 通过循环反转
+	 * @param head
+	 * @return
+	 */
+	private Node<E> reverseByLoop (Node<E> head) {
+		if (head == null || head.next == null) {
+			return head;
+		}
+		Node<E> pre = head;
+		Node<E> cur = head.next;
+		Node<E> temp = null;
+		while (cur != null) {
+			temp = cur.next;
+			cur.next = pre;
+			
+			pre = cur;
+			cur = temp;
+		}
+		head.next = null;
+		return pre;
+	}
 	
 }
