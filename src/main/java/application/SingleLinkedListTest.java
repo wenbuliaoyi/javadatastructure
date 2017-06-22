@@ -8,8 +8,8 @@ public class SingleLinkedListTest {
 		list.add("ghw");
 		list.add("xiaohong");
 		list.add("xiaoli");
-		String str = list.get(0);
-		System.out.println(str);
+		list.reverseByLoop();
+		System.out.println(list.get(2));
 	}
 
 }
